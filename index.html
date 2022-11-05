@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">BMI CALCULATOR</div>
+            <div class="card-body">
+                <form class="form" onsubmit="return false">
+                    <div>
+                        <label >Ages</label>
+                        <input type="text" placeholder="age between 2-120">
+                    </div>
+                    <div>
+                        <label>Gender</label>
+                        <input type="radio" name="gender" value="Male">Male
+                        <input type="radio" name="gender" value="Female">Female
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>weight:</label>
+                        <input type="number" name="" placeholder="weight in kg" required="true" id="weight"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Height:</label>
+                        <input type="text" name="" placeholder="height in feet" required="true" id="height"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>BMI VALUE:</label>
+                        <input type="text" name="" id="bmivalue" class="form-control">
+                    </div>
+                    <div>
+                        <button type="submit" class="button-succes" onclick="getbmivalue(this)">Calculate</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="card-footer">... </div> -->
+        </div>
+    </div>
+
+
+    <script>
+
+        function getbmivalue() {
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+            height = height * 12;
+            height = height * 0.025; // to convert to meter
+
+            var newbmivalue = weight / (height * height);
+           newbmivalue=  Math.round(newbmivalue);
+      
+           
+            document.getElementById("bmivalue").value = newbmivalue;
+            // console.log(newbmivalue)
+
+            
+           if(newbmivalue<16){
+            document.getElementById("bmivalue").value = newbmivalue + " Severe thiness";
+            
+           }
+           else if(newbmivalue===16 || newbmivalue<17){
+            document.getElementById("bmivalue").value = newbmivalue +  " Moderate thiness";
+           
+           }
+           else if(newbmivalue===17 || newbmivalue<18.5){
+            document.getElementById("bmivalue").value = newbmivalue +  " Mild thiness";
+          
+           }
+           else if(newbmivalue===18.5 || newbmivalue<25){
+            document.getElementById("bmivalue").value = newbmivalue +  " Normal";
+            text="Normal"
+           }
+           else if(newbmivalue===25 || newbmivalue<30){
+            document.getElementById("bmivalue").value = newbmivalue +  " over weieght";
+           
+           }
+           else if(newbmivalue===30 || newbmivalue<35){
+            document.getElementById("bmivalue").value = newbmivalue + " Obesses class 1";
+          
+           }
+           else if(newbmivalue===35 || newbmivalue<40){
+            document.getElementById("bmivalue").value = newbmivalue +  " Obesses class 2";
+           
+           }
+           else if(newbmivalue>40){
+            document.getElementById("bmivalue").value = newbmivalue +  " Obesses class 3";
+            
+           }
+          
+        }
+
+
+    </script>
+</body>
+
+</html>
